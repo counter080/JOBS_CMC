@@ -27,16 +27,35 @@ class Loader {
             'method'        => 'logout',
             'controllerClass'=> 'LogoutController'
         ),
-        'home/addjob'      => array(
+        'addjob'      => array(
             'controller'    => (FRONT_CONTROLLER_LOCATION . "JobController.php"),
             'method'        => 'index',
-            'controllerClass' => 'JobController'
+            'controllerClass' => 'JobController',
+            'guard_rules'     => ['redirectIfisEmployer']
         ),
         'firm'      => array(
             'controller'    => (FRONT_CONTROLLER_LOCATION . "FirmController.php"),
             'method'        => 'index',
             'controllerClass' => 'FirmController',
             'guard_rules'      => ['redirectIfFirmIsCreated']
+        ),
+        'jobs'      => array(
+            'controller'    => (FRONT_CONTROLLER_LOCATION . "jobController.php"),
+            'method'        => 'index',
+            'controllerClass' => 'jobController'
+            //'guard_rules'      => ['redirectIfAuthenticated']
+        ),
+        'addjob'      => array(
+            'controller'    => (FRONT_CONTROLLER_LOCATION . "jobController.php"),
+            'method'        => 'jobIndex',
+            'controllerClass' => 'jobController'
+            //'guard_rules'      => ['redirectIfAuthenticated']
+        ),
+        'findjob'      => array(
+            'controller'    => (FRONT_CONTROLLER_LOCATION . "jobController.php"),
+            'method'        => 'FindJobIndex',
+            'controllerClass' => 'jobController'
+            //'guard_rules'      => ['redirectIfAuthenticated']
         )
     );
 

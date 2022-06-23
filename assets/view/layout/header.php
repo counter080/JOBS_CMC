@@ -1,3 +1,7 @@
+<?php 
+    include basecontext("assets/client/models/UserModel.php");
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -19,8 +23,6 @@
                 <p class="header-text2"> Твоето място за работа!</p>
             </div>
         </div>
-        
-
     </div>
     <div class="row">
         <div class="col-xs-12">
@@ -35,10 +37,10 @@
                 <?php else: ?>
                 <ul>
                 <li> <a href="<?php echo url('home'); ?>">Начало</a> </li>
-                <li> <a href="">Намери си работа</a> </li>
-                <?php //if(UserModel::hasEmployerAccount()): ?>
-                <li> <a href="<?php echo url('home/addjob') ?>">Добави обява</a> </li>
-                <?php //endif; ?>
+                <li> <a href="<?php echo url('findjob') ?>">Намери си работа</a> </li>
+                <?php if(UserModel::hasEmployerAccount()): ?>
+                <li> <a href="<?php echo url('addjob') ?>">Добави обява</a> </li>
+                <?php endif; ?>
                 <li class="right"> <a href="<?php echo url('logout'); ?>" >Изход </a></li>
                 </ul>
                 <?php endif; ?>

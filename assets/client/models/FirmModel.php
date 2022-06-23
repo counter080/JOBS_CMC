@@ -1,5 +1,5 @@
 <?php 
-include basecontext("assets/client/models/UserModel.php");
+//include basecontext("assets/client/models/UserModel.php");
 
 class FirmModel{
     const NAME_FIRM = "firm_name";
@@ -31,6 +31,6 @@ class FirmModel{
       }
     public static function isFirmCreated() {
         return isset($_SESSION['has_firm_created']) && 
-               $_SESSION['has_firm_created'] == true;
+               $_SESSION['has_firm_created'] == false;
     }
 }

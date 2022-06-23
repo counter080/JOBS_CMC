@@ -1,5 +1,6 @@
 <?php 
 include basecontext("assets/client/models/UserModel.php");
+//session_start();
 
 class loginController{
 
@@ -31,7 +32,24 @@ class loginController{
         $_SESSION['password']     = $nickname;
         $_SESSION['user_role']    = UserModel::getUserRoleById();
         $_SESSION['login_status'] = true;
-        $_SESSION['has_firm_created'] = true;
+        //check firm is created with validation from database -- проверка на айдито на usera дали има добавена фирма вече. Ако е да добавя името на фирмата в сесия.
+        $_SESSION['has_firm_created'] = false;
+        $userFirm = UserModel::ChecUserForFirm();
+        if($userFirm!=null){
+            $_SESSION['user_firm'] = $userFirm;
+        }
+        else {
+            if(UserModel::hasEmployerAccount()==true){
+                $_SESSION['has_firm_created'] = false;
+            }
+        }
+        if(UserModel::hasEmployerAccount()==true){
+            $_SESSION['is_employer'] = true;
+        }
+        else{
+            $_SESSION['is_employer'] = false;
+        }
+       
         redirect('home');
        // return Message::setMessage('Грешно име или парола','signin_message');
        // var_dump($userArray);

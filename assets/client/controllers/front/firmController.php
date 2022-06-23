@@ -5,7 +5,7 @@ class firmController
 
     public function index()
     {
-        $_SESSION['has_firm_created'] = true;
+        $_SESSION['has_firm_created'] = false;
         load_view('front', 'firm');
     }
     public static function addFirm()
@@ -41,7 +41,6 @@ class firmController
                 'IDN'       => $IDN,
                 'type_job'  => $type_job
             ));
-           
 
         }
         

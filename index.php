@@ -8,7 +8,7 @@ include basecontext('assets/vendor/validation/validation.php');
 include basecontext('assets/vendor/message/message.php'); 
 include basecontext('assets/vendor/Loader/Loader.php');    
 
-//var_dump($_SESSION['login_status']);
+//var_dump($_SESSION['is_employer']);
 
 Loader::loadHeader();
 

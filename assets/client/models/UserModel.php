@@ -38,11 +38,27 @@ class UserModel {
         return $result;
         
     }
+    public static function ChecUserForFirm(){
+        $id = $_SESSION['user_id'];
+        $result = Database::fetchQuery("Select firm_id from user_firm where user_id='$id'");
+        //var_dump($result[0]);
+        if($result){
+            return implode($result[0]);
+        }
+        else{
+            return "няма фирма";
+        }
+    }
 
     public static function isAuthenticated() {
         return isset($_SESSION['login_status']) && 
                $_SESSION['login_status'] == true;
     }
+    public static function isEmployer() {
+        return isset($_SESSION['is_employer']) && 
+               $_SESSION['is_employer'] == true;
+    }
+
 
     public static function getUserId($username){
       $result =  Database::select('tb_user_data',array(
@@ -78,11 +94,11 @@ class UserModel {
     }
     public static function hasEmployAccount(){
         $result = self::getAccountType($_POST['nickname']);
-        return $result =='Физическо лице';
+        return $result =='Физическо Лице';
     }
     public static function hasEmployerAccount(){
-        $result = self::getAccountType($_POST['nickname']);
-        return $result =='Юрeдическо лице';
+        $result = self::getAccountType($_SESSION['nickname']);
+        return $result =='Юредическо Лице';
     }
 
     public static function getRoles(){

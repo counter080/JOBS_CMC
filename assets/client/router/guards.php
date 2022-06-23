@@ -6,5 +6,8 @@ function redirectIfAuthenticated() {
 function redirectIfFirmIsCreated() {
     return FirmModel::isFirmCreated();
 }
-
+function redirectIfisEmployer(){
+    return !UserModel::isEmployer();
+   
+}
 
